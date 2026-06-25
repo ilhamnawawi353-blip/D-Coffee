@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>D' Street Coffee – Angkringan Kopi Pematangsiantar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- ✅ CSS Eksternal -->
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Lightbox tambahan (inline karena sangat kecil) -->
+  <style>
+    #lightbox {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,.92); backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+    }
+    #lightbox.active { display: flex; }
+    #lightbox .lb-img { max-width: 90vw; max-height: 85vh; object-fit: contain; border: 1px solid #2A2A2A; }
+    #lightbox .lb-close {
+      position: absolute; top: 20px; right: 28px;
+      font-size: 2rem; color: #fff; cursor: pointer; line-height: 1;
+      opacity: .6; transition: opacity .2s;
+    }
+    #lightbox .lb-close:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ===================== WHATSAPP FLOAT ===================== -->
+<a href="https://wa.me/6285121222866?text=Halo%20D'%20Street%20Coffee!%20Saya%20mau%20tanya%20tentang%20menu."
+   target="_blank" class="wa-float" title="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar">
+  <a href="#beranda" class="nav-brand">
+    <!-- 🖼️ Ganti src dengan path logo kamu -->
+    <img src="images/Logo.jpeg" alt="Logo D' Street Coffee" class="nav-logo-img"
+         onerror="this.style.background='#B8972A';this.removeAttribute('onerror')"/>
+    <span class="nav-brand-name">D' Street Coffee</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#beranda">Beranda</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#galeri">Galeri</a></li>
+    <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#lokasi">Lokasi</a></li>
+    <li><a href="https://wa.me/6285121222866" target="_blank" class="nav-cta">Pesan Sekarang</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===================== HERO / BERANDA ===================== -->
+<section id="beranda">
+  <!--
+    🖼️ FOTO HERO — Ganti URL di bawah dengan foto asli D' Street Coffe
+    Bisa juga ganti di style.css bagian .hero-bg > url(...)
+  -->
+  <div class="hero-bg"
+       style="background-image:
+         linear-gradient(to bottom,rgba(13,13,13,.7) 0%,rgba(13,13,13,.35) 50%,rgba(13,13,13,.97) 100%),
+         url('images/coffee-bg.jpg');">
+  </div>
+  <div class="hero-content">
+    <div class="hero-label">📍 Pematangsiantar — Halal 100%</div>
+    <h1><span class="gold">D' Street</span><br><span class="outline">Coffee</span></h1>
+    <p class="hero-sub">
+      Lebih dari sekadar angkringan kopi biasa —<br>
+      titik temu hangat bagi <strong>siapa saja</strong>.<br>
+      Kopi nikmat, thaican lezat, grill menggugah selera.
+    </p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-gold">Lihat Menu ↓</a>
+      <a href="#tentang" class="btn-ghost">Tentang Kami</a>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-tag">📍 Jl. Asahan No. 3e, Pematangsiantar</div>
+      <div class="meta-tag">🕖 Buka 19.00 – 01.00 Setiap Hari</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HALAL STRIP ===================== -->
+<div class="halal-strip">
+  <span>✓ HALAL 100%</span>
+  <div class="halal-dot"></div>
+  <span>Coffee · Thaican · Grill</span>
+  <div class="halal-dot"></div>
+  <span>Buka Setiap Hari 19.00 – 01.00</span>
+  <div class="halal-dot"></div>
+  <span>@dvib_s</span>
+</div>
+
+<!-- ===================== MENU ===================== -->
+<section id="menu">
+  <div class="menu-header">
+    <div>
+      <span class="sec-eyebrow">Pilihan Kami</span>
+      <h2 class="sec-title">Menu</h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab-btn active" data-tab="coffee">Coffee</button>
+      <button class="tab-btn" data-tab="noncoffee">Non Coffee</button>
+      <button class="tab-btn" data-tab="thaican">Thaican & Grill</button>
+    </div>
+  </div>
+
+  <!-- TAB: COFFEE -->
+  <div id="tab-coffee">
+    <div class="sig-grid">
+      <div class="sig-card">
+        <div class="sig-img">
+          <img src="images/sanger.png" alt="Foto Sanger" onerror="this.style.display='none'"/>
+        </div>
+        <div class="sig-badge">Signature</div>
+        <div class="sig-nama">Sanger</div>
+        <div class="sig-desc">Kopi espresso klasik dengan cita rasa autentik yang menjadi andalan D' Street Coffe sejak hari pertama berdiri.</div>
+        <div class="sig-harga-wrap">
+          <span class="sig-hl">H</span><span class="sig-hr">Rp 14k</span>
+          <span class="sig-hl" style="margin-left:.6rem">C</span><span class="sig-hr">Rp 18k</span>
+        </div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-img">
+          <img src="images/kopi gula arenn.png" alt="Foto Kopi Gula Aren" onerror="this.style.display='none'"/>
+        </div>
+        <div class="sig-badge">Signature</div>
+        <div class="sig-nama">Kopi Gula Aren</div>
+        <div class="sig-desc">Perpaduan kopi segar dengan manisnya gula aren asli pilihan — disajikan dingin dengan es batu yang melimpah.</div>
+        <div class="sig-harga-wrap">
+          <span class="sig-hl">H</span><span class="sig-hr">Rp 18k</span>
+          <span class="sig-hl" style="margin-left:.6rem">C</span><span class="sig-hr">Rp 20k</span>
+        </div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-img">
+          <img src="images/tripple peach.png" alt="Foto Americano Triple Peach" onerror="this.style.display='none'"/>
+        </div>
+        <div class="sig-badge">Signature</div>
+        <div class="sig-nama">Americano Triple Peach</div>
+        <div class="sig-desc">Americano segar dengan sentuhan tiga lapis buah persik — asam, manis, dan unik. Menu eksklusif D' Street.</div>
+        <div class="sig-harga-wrap"><span class="sig-hl">C</span><span class="sig-hr">Rp 21k</span></div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-img">
+          <img src="images/coconut coffee rs.png" alt="Foto Coconut Coffee" onerror="this.style.display='none'"/>
+        </div>
+        <div class="sig-badge">Signature</div>
+        <div class="sig-nama">Coconut Coffee</div>
+        <div class="sig-desc">Harum kelapa segar berpadu dengan kopi pilihan — sensasi tropis yang menyegarkan di setiap tegukan.</div>
+        <div class="sig-harga-wrap">
+          <span class="sig-hl">H</span><span class="sig-hr">Rp 18k</span>
+          <span class="sig-hl" style="margin-left:.6rem">C</span><span class="sig-hr">Rp 20k</span>
+        </div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-img">
+          <img src="images/Butterscotch.png" alt="Foto Butterscotch Coffee" onerror="this.style.display='none'"/>
+        </div>
+        <div class="sig-badge">Signature</div>
+        <div class="sig-nama">Butterscotch Coffee</div>
+        <div class="sig-desc">Kopi dengan siraman saus butterscotch karamel yang kaya dan manis — manis yang tidak berlebihan.</div>
+        <div class="sig-harga-wrap"><span class="sig-hl">C</span><span class="sig-hr">Rp 23k</span></div>
+      </div>
+    </div>
+
+    <div class="menu-list-grid" style="margin-top:1px">
+      <div class="menu-col">
+        <div class="menu-col-title">Kopi Lainnya</div>
+        <div class="menu-item"><span class="menu-item-name">Espresso</span><span class="menu-item-price">Rp 10k</span></div>
+        <div class="menu-item"><span class="menu-item-name">Americano <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">Rp 13K / 15K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Americano Berry <span class="menu-sz">(C)</span></span><span class="menu-item-price">Rp 18k</span></div>
+        <div class="menu-item"><span class="menu-item-name">Coffee Latte <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">Rp 18K / 20K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Moccacino <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">Rp 20K / 22K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Vanilla Latte <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">Rp 20K / 22K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Caramel Latte <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">Rp 20K / 22K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Kopi Lemon <span class="menu-sz">(C)</span></span><span class="menu-item-price">Rp 20k</span></div>
+        <div class="menu-item"><span class="menu-item-name">Caramel Macchiato <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">Rp 21K / 23K</span></div>
+      </div>
+      <div class="menu-col" style="border-left:1px solid var(--border)">
+        <div class="menu-col-title">Keterangan & Add-ons</div>
+        <div class="menu-item" style="flex-direction:column;align-items:flex-start;gap:.4rem;padding:.9rem 1.4rem">
+          <span style="font-size:.82rem;color:var(--emas)">H = Hot (Panas)</span>
+          <span style="font-size:.82rem;color:rgba(160,200,255,.8)">C = Cold (Dingin)</span>
+          <span style="font-size:.82rem;color:#bbb">H/C = Tersedia keduanya</span>
+        </div>
+        <div class="menu-col-title">Add-ons</div>
+        <div class="menu-item"><span class="menu-item-name">Air Mineral</span><span class="menu-item-price">Rp 5k</span></div>
+        <div class="menu-item"><span class="menu-item-name">Es Kosong</span><span class="menu-item-price">Rp 2k</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: NON COFFEE -->
+  <div id="tab-noncoffee" class="hidden">
+    <div class="menu-list-grid">
+      <div class="menu-col">
+        <div class="menu-col-title">Non Coffee</div>
+        <div class="menu-item"><span class="menu-item-name">Lemon Tea <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">13K / 15K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Teh Susu <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">13K / 15K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Es Teh Manis</span><span class="menu-item-price">Rp 13.000</span></div>
+        <div class="menu-item"><span class="menu-item-name">Choco <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">15K / 17K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Matcha <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">15K / 17K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Green Tea <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">15K / 17K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Taro <span class="menu-sz">(C)</span></span><span class="menu-item-price">Rp 18k</span></div>
+      </div>
+      <div class="menu-col" style="border-left:1px solid var(--border)">
+        <div class="menu-col-title">Non Coffee </div>
+        <div class="menu-item"><span class="menu-item-name">Peach Tea <span class="menu-sz">(C)</span></span><span class="menu-item-price">Rp 18k</span></div>
+        <div class="menu-item"><span class="menu-item-name">Lychee Tea <span class="menu-sz">(C)</span></span><span class="menu-item-price">Rp 18k</span></div>
+        <div class="menu-item"><span class="menu-item-name">Thai Tea <span class="menu-sz">(H/C)</span></span><span class="menu-item-price">17K / 19K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Blue Ocean <span class="menu-sz">(C)</span></span><span class="menu-item-price">Rp 20k</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: THAICAN & GRILL -->
+  <div id="tab-thaican" class="hidden">
+    <div class="menu-list-grid">
+      <div class="menu-col">
+        <div class="menu-col-title">Thaican</div>
+        <div class="menu-item"><span class="menu-item-name">10 Tusuk</span><span class="menu-item-price">Rp 23K</span></div>
+        <div class="menu-item"><span class="menu-item-name">20 Tusuk</span><span class="menu-item-price">Rp 40K</span></div>
+        <div class="menu-item"><span class="menu-item-name">30 Tusuk</span><span class="menu-item-price">Rp 60K</span></div>
+      </div>
+      <div class="menu-col" style="border-left:1px solid var(--border)">
+        <div class="menu-col-title">Grill</div>
+        <div class="menu-item"><span class="menu-item-name">Paket 1</span><span class="menu-item-price">Rp 30K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Paket 2</span><span class="menu-item-price">Rp 60K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Paket 3</span><span class="menu-item-price">Rp  80K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Paket 4</span><span class="menu-item-price">Rp  110K</span></div>
+        <div class="menu-item"><span class="menu-item-name">Paket 5</span><span class="menu-item-price">Rp  160K</span></div>
+      </div>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-top:none;padding:.9rem 1.4rem">
+      <p style="font-size:.82rem;color:#888">
+        📌 <span style="color:rgba(255,255,255,.55)">Harga menu Thaican & Grill tersedia di tempat. Tanyakan via WhatsApp untuk info lebih lanjut.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALERI FOTO ===================== -->
+<section id="galeri">
+  <div class="galeri-header">
+    <div>
+      <span class="sec-eyebrow">Momen Kami</span>
+      <h2 class="sec-title">Galeri</h2>
+    </div>
+    <p>Suasana hangat, kopi nikmat, dan kenangan yang tertinggal — setiap malam di D' Street Coffee.</p>
+  </div>
+
+  <div class="galeri-grid" id="galeri-wrapper">
+
+    <!-- SLOT 1: Featured (besar, kiri) -->
+    <div class="galeri-slot featured">
+      <img src="images/barista.jpeg" alt="Suasana D' Street Coffe"
+           onerror="this.style.display='none'"/>
+      <div class="slot-placeholder">
+        <div class="slot-icon">📷</div>
+      </div>
+      <div class="slot-overlay"><span>Ganti Foto</span></div>
+      <input type="file" accept="image/*"/>
+    </div>
+
+    <!-- SLOT 2 -->
+    <div class="galeri-slot">
+      <img src="images/mika cantik.jpeg" alt="Menu Kopi D' Street"
+           onerror="this.style.display='none'"/>
+      <div class="slot-placeholder">
+        <div class="slot-icon">☕</div>
+        <p>Foto kopi</p>
+      </div>
+      <div class="slot-overlay"><span>Ganti Foto</span></div>
+      <input type="file" accept="image/*"/>
+    </div>
+
+    <!-- SLOT 3 -->
+    <div class="galeri-slot">
+      <img src="images/post 2.jpeg  " alt="Thaican D' Street"
+           onerror="this.style.display='none'"/>
+      <div class="slot-placeholder">
+        <div class="slot-icon">🍗</div>
+        <p>Foto thaican</p>
+      </div>
+      <div class="slot-overlay"><span>Ganti Foto</span></div>
+      <input type="file" accept="image/*"/>
+    </div>
+
+    <!-- SLOT 4 -->
+    <div class="galeri-slot">
+      <img src="images/Grill.jpeg" alt="Grill D' Street"
+           onerror="this.style.display='none'"/>
+      <div class="slot-placeholder">
+        <div class="slot-icon">🔥</div>
+        <p>Foto grill</p>
+      </div>
+      <div class="slot-overlay"><span>Ganti Foto</span></div>
+      <input type="file" accept="image/*"/>
+    </div>
+
+    <!-- SLOT 5 -->
+    <div class="galeri-slot">
+      <img src="images/post.jpeg" alt="Team D' Street"
+           onerror="this.style.display='none'"/>
+      <div class="slot-placeholder">
+        <div class="slot-icon">👨‍👩‍👧</div>
+        <p>Foto tim/keluarga</p>
+      </div>
+      <div class="slot-overlay"><span>Ganti Foto</span></div>
+      <input type="file" accept="image/*"/>
+    </div>
+
+    <!-- SLOT 6 -->
+    <div class="galeri-slot">
+      <img src="images/taichan.jpeg" alt="Lokasi D' Street"
+           onerror="this.style.display='none'"/>
+      <div class="slot-placeholder">
+        <div class="slot-icon">🏠</div>
+        <p>Foto tempat</p>
+      </div>
+      <div class="slot-overlay"><span>Ganti Foto</span></div>
+      <input type="file" accept="image/*"/>
+    </div>
+
+  </div><!-- /galeri-grid -->
+
+  <p class="galeri-caption">hubungi kami di
+    <a href="https://instagram.com/dvib_s" target="_blank" style="color:var(--emas);text-decoration:none">@dvib_s</a>
+  </p>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <span class="lb-close" title="Tutup">✕</span>
+  <img class="lb-img" src="" alt=""/>
+</div>
+
+<!-- ===================== TENTANG ===================== -->
+<section id="tentang">
+  <div class="tentang-grid">
+    <div class="tentang-visual">
+      <img src="images/barista.jpeg"
+           alt="Suasana D' Street Coffee"
+           class="tentang-img-main"/>
+      <div class="tentang-logo-badge">
+        <!-- 🖼️ Ganti src dengan logo kamu -->
+        <img src="images/Logo.jpeg" alt="Logo D' Street Coffe"/>
+      </div>
+    </div>
+    <div class="tentang-text">
+      <span class="sec-eyebrow">Dari Keluarga Untuk Semua</span>
+      <h2 class="sec-title">Tentang<br>D' Street<br>Coffee</h2>
+      <p>D' Street Coffe adalah usaha yang dijalankan sebagai <em>bisnis keluarga</em> yang didirikan sejak tahun <em>2025</em>, di bawah arahan wanita cantik bernama <em>Dian Pricylia</em>.</p>
+      <p>Nama "D' Street" diambil dari inisial nama <em>seluruh keluarga</em> yaitu "D" — sebuah nama yang mengandung semangat kebersamaan dan kekeluargaan yang erat.</p>
+      <p>Berawal dari kecintaan menyajikan kehangatan secangkir kopi, kini terus berinovasi menghadirkan menu pelengkap seperti grill yang menggugah selera hingga lezatnya thaican yang bikin nagih.</p>
+      <div class="nilai-list">
+        <div class="nilai-row">
+          <div class="nilai-num">01</div>
+          <div class="nilai-body"><h4>Bisnis Keluarga</h4><p>Dikelola dengan sepenuh hati oleh satu keluarga yang punya visi dan semangat yang sama.</p></div>
+        </div>
+        <div class="nilai-row">
+          <div class="nilai-num">02</div>
+          <div class="nilai-body"><h4>Halal 100%</h4><p>Semua menu dijamin halal — untuk semua kalangan, dari remaja hingga orang tua.</p></div>
+        </div>
+        <div class="nilai-row">
+          <div class="nilai-num">03</div>
+          <div class="nilai-body"><h4>Titik Temu Hangat</h4><p>Dari remaja yang butuh tempat chill, hingga orang tua yang merindukan suasana santai.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LOKASI ===================== -->
+<section id="lokasi">
+  <div class="lokasi-grid">
+    <div>
+      <span class="sec-eyebrow">Temukan Kami</span>
+      <h2 class="sec-title">Lokasi &<br>Jam Buka</h2>
+      <p class="sec-desc">Strategis dan mudah dijangkau — tepat di seberang Kampus Nomensen Pematangsiantar.</p>
+      <div class="lokasi-info">
+        <div class="lokasi-card">
+          <div class="lokasi-icon">📍</div>
+          <div>
+            <h4>Alamat</h4>
+            <p>Jl. Asahan No. 3e, Pematangsiantar<br>(Tepat di seberang Kampus Nomensen)</p>
+          </div>
+        </div>
+        <div class="lokasi-card">
+          <div class="lokasi-icon">🕖</div>
+          <div>
+            <h4>Jam Buka</h4>
+            <p>Setiap Hari: <strong style="color:var(--emas)">19.00 – 01.00 WIB</strong></p>
+          </div>
+        </div>
+        <div class="lokasi-card">
+          <div class="lokasi-icon">📱</div>
+          <div>
+            <h4>Hubungi Kami</h4>
+            <p>WhatsApp: <a href="https://wa.me/6285121222866">085121222866</a><br>
+               Instagram: <a href="https://instagram.com/dvib_s" target="_blank">@dvib_s</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="map-box">
+      <!--
+        🗺️ CARA PASANG GOOGLE MAPS:
+        1. Buka maps.google.com
+        2. Cari "Jl Asahan No 3e Pematangsiantar"
+        3. Klik Bagikan → Sematkan peta
+        4. Salin kode <iframe> dan ganti div ini
+      -->
+      <div class="map-icon-big">🗺️</div>
+      <p>Ganti bagian ini dengan embed Google Maps<br>
+         <span style="color:rgba(255,255,255,.35);font-size:.75rem">Jl. Asahan No. 3e, Pematangsiantar</span>
+      </p>
+      <a href="https://maps.google.com/?q=Jl+Asahan+No+3e+Pematangsiantar" target="_blank">
+        Buka di Google Maps ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-row">
+        <!-- 🖼️ Ganti src dengan logo kamu -->
+        <img src="images/Logo.jpeg" alt="Logo" class="footer-logo"
+             onerror="this.style.background='#B8972A'"/>
+        <span class="footer-brand-name">D' Street Coffe</span>
+      </div>
+      <p class="footer-tagline">Titik temu hangat bagi siapa saja di Pematangsiantar. Dari keluarga, untuk semua.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/dvib_s" target="_blank" class="social-btn" title="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/6285121222866" target="_blank" class="social-btn" title="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-nav">
+      <h4>Navigasi</h4>
+      <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#tentang">Tentang Kami</a></li>
+        <li><a href="#lokasi">Lokasi</a></li>
+      </ul>
+    </div>
+    <div class="footer-nav">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#">Jl. Asahan No. 3e, Pematangsiantar</a></li>
+        <li><a href="#">Buka 19.00 – 01.00 WIB</a></li>
+        <li><a href="tel:085121222866">085121222866</a></li>
+        <li><a href="https://instagram.com/dvib_s" target="_blank">@dvib_s</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 D' Street Coffee. Dibuat untuk Tugas Akhir Pemrograman Web.</p>
+    <span class="hm">HALAL ✓</span>
+  </div>
+</footer>
+
+<!-- ✅ JavaScript Eksternal -->
+<script src="script.js"></script>
+</body>
+</html>
